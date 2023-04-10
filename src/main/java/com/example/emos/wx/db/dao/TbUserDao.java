@@ -17,6 +17,8 @@ public interface TbUserDao {
 
     public Set<String> searchUserPermissions(int userId);
 
+    public TbUser searchById(int userId);
+
     int insertSelective(TbUser record);
 
     TbUser selectByPrimaryKey(Integer id);
