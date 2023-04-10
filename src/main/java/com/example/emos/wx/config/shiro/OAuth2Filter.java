@@ -63,8 +63,6 @@ public class OAuth2Filter extends AuthenticatingFilter {
 
     /**
      * 该方法用于处理所有应该被Shiro处理的请求
-     * @param servletRequest
-     * @param servletResponse
      * @return
      * @throws Exception
      */

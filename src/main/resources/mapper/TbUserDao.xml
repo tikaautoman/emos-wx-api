@@ -62,16 +62,16 @@
     crate_time = #{createTime}
   </insert>
 
-  <select id="searchIdByOpenId" parameterType="String" resultType="Integer">
-    select id from tb_user where open_id=#{openId} and status=1
-  </select>
-
   <select id="searchUserPermissions" parameterType="int" resultType="String">
     select p.permission_name
     from tb_user u
            join tb_role r on json_contains(u.role,cast(r.id as char))
            join tb_permission p on json_contains(r.permissions,cast(p.id as char))
     where u.id = #{userId} and u.status=1;
+  </select>
+
+  <select id="searchIdByOpenId" parameterType="String" resultType="Integer">
+    select id from tb_user where open_id=#{openId} and status=1
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

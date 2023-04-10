@@ -11,6 +11,9 @@
   <sql id="Base_Column_List">
     id, param_key, param_value, `status`, remark
   </sql>
+  <select id="selectAllParam" resultType="com.example.emos.wx.db.pojo.SysConfig">
+    select param_key,param_value from sys_config where status=1;
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

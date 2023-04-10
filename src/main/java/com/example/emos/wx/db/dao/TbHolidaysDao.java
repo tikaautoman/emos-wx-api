@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface TbHolidaysDao {
+
+    public Integer searchTodayIsHolidays();
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(TbHolidays record);

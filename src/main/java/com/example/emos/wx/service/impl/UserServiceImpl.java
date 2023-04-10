@@ -4,6 +4,7 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.emos.wx.db.dao.TbUserDao;
+import com.example.emos.wx.exception.EmosException;
 import com.example.emos.wx.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,5 +77,16 @@ public class UserServiceImpl implements UserService {
     public Set<String> searchUserPermissions(int userId) {
         Set<String> permissions=userDao.searchUserPermissions(userId);
         return permissions;
+    }
+
+    @Override
+    public Integer login(String code) {
+        String openId = getOpenId(code);
+        Integer id = userDao.searchIdByOpenId(openId);
+        if (id == null){
+            throw new EmosException("账户不存在");
+        }
+        //TODO 从消息队列中接收消息，转移到消息表
+        return id;
     }
 }

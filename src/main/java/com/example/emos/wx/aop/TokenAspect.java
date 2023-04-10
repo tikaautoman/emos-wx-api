@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Aspect
+
 @Component
 public class TokenAspect {
     @Autowired

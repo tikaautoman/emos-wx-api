@@ -18,6 +18,12 @@
     id, user_id, address, country, province, city, district, `status`, risk, `date`, 
     create_time
   </sql>
+  <select id="haveCheckin" parameterType="HashMap" resultType="Integer">
+    select id
+    from tb_checkin
+    where user_id = #{userId} and date=CURRENT_DATE
+      and create_time between #{start} and #{end} limit 1;
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

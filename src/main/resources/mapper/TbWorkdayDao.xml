@@ -8,6 +8,9 @@
   <sql id="Base_Column_List">
     id, `date`
   </sql>
+  <select id="searchTodayIsWorkday" resultType="Integer">
+    select id from tb_workday where date= CURRENT_DATE LIMIT 1;
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

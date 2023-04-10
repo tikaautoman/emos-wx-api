@@ -10,8 +10,6 @@ import jakarta.servlet.http.HttpServletRequestWrapper;
 import org.springframework.util.StreamUtils;
 
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,16 +22,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         super(request);
         this.request = request;
         this.body = StreamUtils.copyToByteArray(request.getInputStream());
-//        StringBuilder sb = new StringBuilder();
-//        String line;
-//        BufferedReader reader = request.getReader();
-//        while ((line = reader.readLine())!=null){
-//            sb.append(line);
-//        }
-//        String body = sb.toString();
-//        System.out.println("body========"+body);
-//        System.out.println("body length="+body.length());
-//        this.body = body.getBytes(StandardCharsets.UTF_8);
     }
 
     @Override
@@ -92,20 +80,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
     @Override
     public ServletInputStream getInputStream() throws IOException{
-//        InputStream in = super.getInputStream();
-//        StringBuffer body = new StringBuffer();
-//        InputStreamReader reader = new InputStreamReader(in, Charset.forName("UTF-8"));
-//        BufferedReader buffer = new BufferedReader(reader);
-//        String line = buffer.readLine();
-//        while (line != null){
-//            body.append(line);
-//            line = buffer.readLine();
-//        }
-//        buffer.close();
-//        reader.close();
-//        in.close();
-//        System.out.println("body==================="+body.toString());
-//        System.out.println(body.length);
 
         Map<String, String[]> param = request.getParameterMap();
 
